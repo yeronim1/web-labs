@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Book</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+<header>
+  <ul>
+    <li><span>My Books</span></li>
+    <li><a href="books.html">My Collection</a></li>
+    <li><a href="create.html">Add Book</a></li>
+  </ul>
+</header>
+
+<section class="form-section create-form">
+  <h2 class="form-title">Edit Book</h2>
+  <form id="edit-book-form" class="book-form">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" required>
+    </div>
+    <div class="form-group">
+      <label for="author">Author:</label>
+      <input type="text" id="author" required>
+    </div>
+    <div class="form-group">
+      <label for="pages">Number of Pages:</label>
+      <input type="number" id="pages" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="price">Price (UAH):</label>
+      <input type="number" id="price" required>
+    </div>
+    <button type="submit" class="submit-btn">Save Changes</button>
+  </form>
+</section>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const bookId = urlParams.get('id');
+
+  const books = JSON.parse(localStorage.getItem('books')) || [];
+
+  if (bookId !== null && books[bookId]) {
+    const book = books[bookId];
+    document.getElementById('title').value = book.title;
+    document.getElementById('author').value = book.author;
+    document.getElementById('pages').value = book.pages;
+    document.getElementById('description').value = book.description;
+    document.getElementById('price').value = book.price;
+  }
+
+  document.getElementById('edit-book-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    books[bookId] = {
+      title: document.getElementById('title').value,
+      author: document.getElementById('author').value,
+      pages: document.getElementById('pages').value,
+      description: document.getElementById('description').value,
+      price: document.getElementById('price').value,
+    };
+
+    localStorage.setItem('books', JSON.stringify(books));
+
+    window.location.href = 'books.html';
+  });
+
+</script>
+
+</body>
+</html>
