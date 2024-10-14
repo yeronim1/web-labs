@@ -13,14 +13,42 @@ let filteredBooks = [...books];
 
 document.getElementById('book-form')?.addEventListener('submit', function (e) {
     e.preventDefault();
+
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
-    const pages = document.getElementById('pages').value;
+    let pages = document.getElementById('pages').value;
     const description = document.getElementById('description').value;
-    const price = document.getElementById('price').value;
+    let price = document.getElementById('price').value;
 
-    const book = new Book(title, author, pages, description, price);
+    pages = pages.startsWith('-') ? pages.slice(1) : pages;
+    price = price.startsWith('-') ? price.slice(1) : price;
+
+    const book = new Book(title, author, parseInt(pages), description, parseFloat(price));
     books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+    window.location.href = 'books.html';
+});
+
+document.getElementById('edit-book-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    const description = document.getElementById('description').value;
+    let price = document.getElementById('price').value;
+
+    pages = pages.startsWith('-') ? pages.slice(1) : pages;
+    price = price.startsWith('-') ? price.slice(1) : price;
+
+    books[bookId] = {
+        title: title,
+        author: author,
+        pages: parseInt(pages),
+        description: description,
+        price: parseFloat(price)
+    };
+
     localStorage.setItem('books', JSON.stringify(books));
     window.location.href = 'books.html';
 });
