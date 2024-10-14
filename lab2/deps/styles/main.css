@@ -29,6 +29,7 @@ section.guides p {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
 }
 
 .download-btn:hover {

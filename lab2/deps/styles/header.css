@@ -93,6 +93,7 @@ button {
 .login:hover {
     background-color: #e55a2b;
     transform: scale(1.05);
+    border-radius: 5px;
 }
 
 .trending {

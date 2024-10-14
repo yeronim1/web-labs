@@ -9,6 +9,12 @@ footer .social-media {
     margin-bottom: 20px;
 }
 
+footer .social-media a img {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+}
+
 footer .social-media a {
     margin: 0 10px;
     display: inline-block;
