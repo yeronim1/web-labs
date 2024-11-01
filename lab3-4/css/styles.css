@@ -308,3 +308,42 @@ input:checked + .slider:before {
 .submit-btn:hover {
     background-color: #0056b3;
 }
+
+
+.warning {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f44336; /* Червоний колір для помилки */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+    width: 300px;
+}
+
+.warning p {
+    margin-bottom: 20px;
+}
+
+.warning button {
+    background-color: white;
+    color: #f44336;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.warning button:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
