@@ -20,6 +20,18 @@ document.getElementById('book-form')?.addEventListener('submit', function (e) {
     const description = document.getElementById('description').value;
     let price = document.getElementById('price').value;
 
+    const isDuplicate = books.some(book => book.title.toLowerCase() === title.toLowerCase() && book.author.toLowerCase() === author.toLowerCase());
+    if (isDuplicate) {
+        alert('Книга з такою ж назвою та автором вже існує!');
+        return;
+    }
+
+    // Від'ємна перевірка на сторінки та ціну
+    if (parseInt(pages) <= 0 || parseFloat(price) <= 0) {
+        alert('Кількість сторінок та ціна повинні бути додатніми значеннями!');
+        return;
+    }
+
     pages = pages.startsWith('-') ? pages.slice(1) : pages;
     price = price.startsWith('-') ? price.slice(1) : price;
 
@@ -38,6 +50,18 @@ document.getElementById('edit-book-form')?.addEventListener('submit', function (
     const description = document.getElementById('description').value;
     let price = document.getElementById('price').value;
 
+    const isDuplicate = books.some(book => book.title.toLowerCase() === title.toLowerCase() && book.author.toLowerCase() === author.toLowerCase());
+    if (isDuplicate) {
+        alert('Книга з такою ж назвою та автором вже існує!');
+        return;
+    }
+
+    // Від'ємна перевірка на сторінки та ціну
+    if (parseInt(pages) <= 0 || parseFloat(price) <= 0) {
+        alert('Кількість сторінок та ціна повинні бути додатніми значеннями!');
+        return;
+    }
+
     pages = pages.startsWith('-') ? pages.slice(1) : pages;
     price = price.startsWith('-') ? price.slice(1) : price;
 
@@ -52,6 +76,8 @@ document.getElementById('edit-book-form')?.addEventListener('submit', function (
     localStorage.setItem('books', JSON.stringify(books));
     window.location.href = 'books.html';
 });
+
+
 
 function renderBooks(bookArray = books) {
     const bookList = document.getElementById('book-list');

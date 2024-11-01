@@ -19,6 +19,11 @@
   </nav>
 </header>
 
+<div id="warning" class="warning hidden">
+  <p id="warning-text"></p>
+  <button id="close-warning-btn">OK</button>
+</div>
+
 <section class="form-section create-form">
   <h2 class="form-title">Add a New Book</h2>
   <form id="book-form" class="book-form">
@@ -32,7 +37,7 @@
     </div>
     <div class="form-group">
       <label for="pages">Number of Pages:</label>
-      <input type="number" id="pages" required>
+      <input type="number" id="pages" required min="1">
     </div>
     <div class="form-group">
       <label for="description">Description:</label>
@@ -40,7 +45,7 @@
     </div>
     <div class="form-group">
       <label for="price">Price (UAH):</label>
-      <input type="number" id="price" required>
+      <input type="number" id="price" required min="1">
     </div>
     <button type="submit" class="submit-btn">Submit</button>
   </form>
