@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Harry potter",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/harry_potter.jpg",
+    "price": 100,
+    "type": "fantasy"
+  },
+  {
+    "id": 2,
+    "title": "Willy Wonka",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/willy_wonka.jpg",
+    "price": 30,
+    "type": "fantasy"
+  },
+  {
+    "id": 3,
+    "title": "Alice's Adventures",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/alices_adventures.jpg",
+    "price": 40,
+    "type": "fairy tail"
+  },
+  {
+    "id": 4,
+    "title": "Willy Wonka 2",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/willy_wonka.jpg",
+    "price": 15,
+    "type": "fantasy"
+  },
+  {
+    "id": 5,
+    "title": "Harry potter 2",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/harry_potter.jpg",
+    "price": 120,
+    "type": "fantasy"
+  },
+  {
+    "id": 6,
+    "title": "Alice's Adventures 2",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/alices_adventures.jpg",
+    "price": 50,
+    "type": "fairy tail"
+  },
+  {
+    "id": 7,
+    "title": "The lord of the rings",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/lord_rings.jpg",
+    "price": 110,
+    "type": "action"
+  },
+  {
+    "id": 8,
+    "title": "Willy Wonka 3",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/willy_wonka.jpg",
+    "price": 35,
+    "type": "fantasy"
+  },
+  {
+    "id": 9,
+    "title": "Harry potter 3",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
+    "imgpath": "components/image/harry_potter.jpg",
+    "price": 130,
+    "type": "fantasy"
+  }
+]
