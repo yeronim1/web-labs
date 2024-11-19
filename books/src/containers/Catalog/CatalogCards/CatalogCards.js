@@ -1,19 +1,44 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './CatalogCards.css';
-import cardsData from '../../../api/Cards.json';
-import CardItem from '../../../components/card_item/CardItem';
-import Filters from '../Filters/Filters';
+import CardItem from '../../../components/card_item/CardItem.js';
+import Filters from '../Filters/Filters.js';
+import { getImageSrc } from '../../../components/card_item/CardItem.js';
+import Loader from '../../../components/Loader/Loader.js';
 
 function CatalogCards() {
+
+    const [cards, setCards] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [sortType, setSortType] = useState('none');
+    const [sortFeat, setSortFeat] = useState('none');
+    const [sortOrder, setSortOrder] = useState('descending');
+    const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const [searchTerm, setSearchTerm] = useState('');
-    const [sortType, setSortType] = useState('none');
-    const [sortFeat, setSortFeat] = useState('none');
-    const [sortOrder, setSortOrder] = useState('descending');
+    useEffect(() => {
+        const fetchCards = () => {
+            setLoading(true);
+            axios.get('/api/cards-catalog', { params: { searchTerm, sortType, sortFeat, sortOrder } })
+                .then(response => {
+                    setCards(response.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching cards:', error);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        };
+
+        fetchCards();
+
+    }, [searchTerm, sortType, sortFeat, sortOrder]);
+
 
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
@@ -31,25 +56,6 @@ function CatalogCards() {
         setSortOrder(event.target.value);
     };
 
-    const cardsWithIndex = cardsData.map((card, index) => ({ ...card, originalIndex: index }));
-
-    const filteredCards = cardsWithIndex
-        .filter(card => card.title.toLowerCase().includes(searchTerm.toLowerCase()))
-        .filter(card => sortType === 'none' || card.type === sortType)
-        .sort((a, b) => {
-            if (sortFeat === 'none') return 0;
-
-            if (sortFeat === 'price') {
-                return sortOrder === 'descending' ? b.price - a.price : a.price - b.price;
-            }
-
-            if (sortFeat === 'name') {
-                return sortOrder === 'descending' ? b.title.localeCompare(a.title) : a.title.localeCompare(b.title);
-            }
-
-            return 0;
-        });
-
     return (
         <div>
             <Filters
@@ -58,21 +64,25 @@ function CatalogCards() {
                 onSortOrderChange={handleSortOrderChange}
                 onSearch={handleSearch}
             />
-            <div className='home__cards'>
-                {filteredCards.map((card) => {
-                    const imageSrc = require(`../../../${card.imgpath}`);
-                    return (
-                        <CardItem
-                            key={card.originalIndex}
-                            {...card}
-                            index={card.originalIndex}
-                            imageSrc={imageSrc}
-                        />
-                    );
-                })}
-            </div>
+            {loading && <Loader />}
+            {!loading && (
+                <div className='home__cards'>
+                    {cards.map((card, index) => {
+                        const imageSrc = getImageSrc(card.imgpath);
+                        return (
+                            <CardItem
+                                key={index}
+                                {...card}
+                                index={index}
+                                imageSrc={imageSrc}
+                            />
+                        );
+                    })}
+                </div>
+            )}
+
         </div>
     );
-};
+}
 
 export default CatalogCards;

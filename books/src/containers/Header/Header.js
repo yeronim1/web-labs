@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import logo from "../../components/image/logo.png";
-import Navigation from "../Navigation/Navigation";
+import Navigation from "../Navigation/Navigation.js";
 
 
 function Header() {

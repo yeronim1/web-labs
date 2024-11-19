@@ -1,14 +1,33 @@
 import React from "react";
 import './CardItem.css';
 import { Link, useLocation } from 'react-router-dom';
+import HarryPotter from '../image/harry_potter.jpg';
+import WillyWonka from '../image/willy_wonka.jpg';
+import AlicesAdventures from '../image/alices_adventures.jpg';
+import LordRings from '../image/lord_rings.jpg';
 
-function CardItem({ title='No title.', text, imageSrc, price, index }) {
+export function getImageSrc(imgpath) {
+    switch (imgpath) {
+        case 'Harry potter':
+            return HarryPotter;
+        case 'Willy Wonka':
+            return WillyWonka;
+        case 'Alices Adventures':
+            return AlicesAdventures;
+        case 'The lord of the rings':
+            return LordRings;
+        default:
+            return null; // or a default image
+    }
+}
+
+function CardItem({ id, title, text, imgpath, price }) {
     const location = useLocation();
+    const imageSrc = getImageSrc(imgpath);
 
-
-    return(
+    return (
         <div className="cards_content">
-            <img src={imageSrc} alt={title} className="cards__photo"/>
+            {imageSrc && <img src={imageSrc} alt={title} className="cards__photo" />}
             <article>
                 <h3 className="cards_title">{title}</h3>
                 <p className="cards_desc">{text}</p>
@@ -21,13 +40,13 @@ function CardItem({ title='No title.', text, imageSrc, price, index }) {
             </article>
             {location.pathname === '/catalog' && (
                 <div className="cards__button-container">
-                    <Link to={`/catalog/${index}`}>
+                    <Link to={`/catalog/${id}`}>
                         <button className="cards__button">View More</button>
                     </Link>
                 </div>
             )}
         </div>
-    )
+    );
 }
 
 export default CardItem;

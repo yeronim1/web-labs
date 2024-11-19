@@ -1,7 +1,7 @@
 import React from "react";
-import Hero from "./Hero/Hero";
-import HomeCards from "./HomeCards/HomeCards";
-import DocumentTitle from "../../components/helmet/document_title";
+import Hero from "./Hero/Hero.js";
+import HomeCards from "./HomeCards/HomeCards.js";
+import DocumentTitle from "../../components/helmet/document_title.js";
 
 function Home() {
     DocumentTitle("Home");

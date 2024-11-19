@@ -9,7 +9,7 @@ function Navigation() {
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/catalog">Catalog</Link></li>
-                <li><a href="#services">Cast</a></li>
+                <li><a href="#services">Cart</a></li>
             </ul>
         </nav>
     )

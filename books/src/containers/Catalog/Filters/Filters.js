@@ -1,7 +1,7 @@
 import React from 'react';
 import './Filters.css';
-import Search from './Search/Search';
-import Select from './Select';
+import Search from './Search/Search.js';
+import Select from './Select.js';
 
 
 function Filters({ onSortTypeChange, onSortFeatChange, onSortOrderChange, onSearch }) {

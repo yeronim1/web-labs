@@ -1,24 +1,59 @@
-import React, { useState } from 'react';
-import CardItem from '../../../components/card_item/CardItem';
-import cardsData from '../../../api/Cards.json';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './HomeCards.css';
+import CardItem from '../../../components/card_item/CardItem.js';
+import getImageSrc from '../../../components/card_item/CardItem.js';
 
-function HomeCards() {
-    const [visibleCards, setVisibleCards] = useState(3);
+const HomeCards = () => {
+    const [initialCards, setInitialCards] = useState([]);
+    const [additionalCards, setAdditionalCards] = useState([]);
+    const [showAll, setShowAll] = useState(false);
+
+    useEffect(() => {
+        const fetchCards = () => {
+            axios.get('/api/cards', { params: { limit: 3, offset: 0 } })
+                .then(response => {
+                    setInitialCards(response.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching cards:', error);
+                });
+        };
+
+        fetchCards();
+
+    }, []);
+
 
     const showMoreCards = () => {
-        setVisibleCards(visibleCards + 6);
+        axios.get('/api/cards', {
+            params: { limit: 10, offset: 3 }
+        })
+            .then(response => {
+                setAdditionalCards(response.data);
+                setShowAll(true);
+            })
+            .catch(error => {
+                console.error('Error fetching additional cards:', error);
+            });
     };
 
     const hideCards = () => {
-        setVisibleCards(3);
+        axios.get('/api/cards', { params: { limit: 3, offset: 0 } })
+            .then(response => {
+                setAdditionalCards([]);
+                setShowAll(false);
+            })
+            .catch(error => {
+                console.error('Error fetching initial cards:', error);
+            });
     };
 
     return (
         <div>
             <div className='home__cards'>
-                {cardsData.slice(0, visibleCards).map((card, index) => {
-                    const imageSrc = require(`../../../${card.imgpath}`);
+                {initialCards.map((card, index) => {
+                    const imageSrc = getImageSrc(card.imgpath);
                     return (
                         <CardItem
                             key={index}
@@ -28,17 +63,34 @@ function HomeCards() {
                         />
                     );
                 })}
+                {showAll && additionalCards.map((card, index) => {
+                    const imageSrc = getImageSrc(card.imgpath);
+                    return (
+                        <CardItem
+                            key={index + initialCards.length}
+                            {...card}
+                            index={index + initialCards.length}
+                            imageSrc={imageSrc}
+                        />
+                    );
+                })}
             </div>
-            <div className='home__cards-button'>
-                {visibleCards < cardsData.length && (
-                    <button onClick={showMoreCards}>Show More</button>
-                )}
-                {visibleCards > 3 && (
-                    <button onClick={hideCards}>Hide</button>
-                )}
-            </div>
+            {!showAll && (
+                <div className='home__cards-button'>
+                    <button onClick={showMoreCards}>
+                        View More
+                    </button>
+                </div>
+            )}
+            {showAll && (
+                <div className='home__cards-button'>
+                    <button onClick={hideCards}>
+                        Hide
+                    </button>
+                </div>
+            )}
         </div>
     );
-}
+};
 
 export default HomeCards;
