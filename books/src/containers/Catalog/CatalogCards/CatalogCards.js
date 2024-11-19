@@ -43,6 +43,10 @@ function CatalogCards() {
                 return sortOrder === 'descending' ? b.price - a.price : a.price - b.price;
             }
 
+            if (sortFeat === 'name') {
+                return sortOrder === 'descending' ? b.title.localeCompare(a.title) : a.title.localeCompare(b.title);
+            }
+
             return 0;
         });
 

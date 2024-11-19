@@ -16,6 +16,8 @@ function Filters({ onSortTypeChange, onSortFeatChange, onSortOrderChange, onSear
     const sortFeatOptions = [
         { value: "none", label: "None" },
         { value: "price", label: "Price" },
+        { value: "name", label: "Name" },
+
     ];
 
     const sortOrderOptions = [

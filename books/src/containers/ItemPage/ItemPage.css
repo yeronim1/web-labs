@@ -1,7 +1,8 @@
 
 .main__info {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 50px;
     align-items: center;
     margin-bottom: 100px;
     margin-top: 50px;
@@ -10,9 +11,8 @@
 }
 
 .main__info img {
-    width: 40%;
+    width: 20%;
     height: 50%;
-    resize: block;
     border-radius: 20px;
 }
 
