@@ -1,4 +1,3 @@
-
 .main__info {
     display: flex;
     justify-content: space-around;
@@ -24,6 +23,10 @@
 
 .main__info p {
     font-size: 20px;
+}
+
+.main__info article {
+    margin-bottom: 30px;
 }
 
 .main__price-buttons {
@@ -75,4 +78,27 @@
 .buttons button:active {
     background-color: rgba(0, 0, 0, 0.479);
     transform: translateY(4px);
+}
+
+
+.main__info-selects {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+.main__info-selects__color p, .main__info-selects__count p {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.main__info-selects select , .main__info-selects input{
+    border-radius: 20px;
+    border: 2px solid;
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
 }

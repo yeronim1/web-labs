@@ -5,7 +5,17 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "Harry potter",
     "price": 100,
-    "type": "fantasy"
+    "type": "fantasy",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 0
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   },
   {
     "id": 2,
@@ -13,7 +23,17 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "Willy Wonka",
     "price": 30,
-    "type": "fantasy"
+    "type": "fantasy",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 22
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   },
   {
     "id": 3,
@@ -21,7 +41,17 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "Alices Adventures",
     "price": 40,
-    "type": "fairy tail"
+    "type": "fairy tail",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 2
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   },
   {
     "id": 4,
@@ -29,7 +59,17 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "Willy Wonka",
     "price": 15,
-    "type": "fantasy"
+    "type": "fantasy",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 3
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   },
   {
     "id": 5,
@@ -37,7 +77,17 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "Harry potter",
     "price": 120,
-    "type": "fantasy"
+    "type": "fantasy",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 3
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   },
   {
     "id": 6,
@@ -45,7 +95,17 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "Alices Adventures",
     "price": 50,
-    "type": "fairy tail"
+    "type": "fairy tail",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 3
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   },
   {
     "id": 7,
@@ -53,7 +113,17 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "The lord of the rings",
     "price": 110,
-    "type": "action"
+    "type": "action",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 3
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   },
   {
     "id": 8,
@@ -61,7 +131,17 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "Willy Wonka",
     "price": 35,
-    "type": "fantasy"
+    "type": "fantasy",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 2
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   },
   {
     "id": 9,
@@ -69,6 +149,16 @@
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.",
     "imgpath": "Harry potter",
     "price": 130,
-    "type": "fantasy"
+    "type": "fantasy",
+    "stock": [
+      {
+        "cover": "Hardcover",
+        "amount": 3
+      },
+      {
+        "cover": "Softcover",
+        "amount": 2
+      }
+    ]
   }
 ]

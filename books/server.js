@@ -7,9 +7,7 @@ import fs from 'fs/promises';
 const app = express();
 const PORT = 5000;
 
-
 app.use(express.json());
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -28,28 +26,6 @@ const getCards = async () => {
     }
 };
 
-const getCart = async () => {
-    const filePath = path.join(__dirname, 'src/api/Cart.json');
-    try {
-        const data = await fs.readFile(filePath, 'utf8');
-        return JSON.parse(data);
-    } catch (error) {
-        console.error('Error accessing or reading Cart.json:', error);
-        throw error;
-    }
-};
-
-const saveCart = async (cart) => {
-    const filePath = path.join(__dirname, 'src/api/Cart.json');
-    try {
-        await fs.writeFile(filePath, JSON.stringify(cart, null, 2), 'utf8');
-    } catch (error) {
-        console.error('Error saving Cart.json:', error);
-        throw error;
-    }
-};
-
-
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/api/cards', async (req, res) => {
@@ -63,7 +39,6 @@ app.get('/api/cards', async (req, res) => {
         res.status(500).json({ error: 'Failed to load cards' });
     }
 });
-
 
 app.get('/api/cards-catalog', async (req, res) => {
     try {
@@ -98,7 +73,6 @@ app.get('/api/cards-catalog', async (req, res) => {
     }
 });
 
-
 app.get('/api/cards/:id', async (req, res) => {
     try {
         const { id } = req.params;
@@ -118,6 +92,59 @@ app.get('/api/cards/:id', async (req, res) => {
     }
 });
 
+app.patch('/api/cards-catalog', async (req, res) => {
+    const { id, color, amount } = req.body;
+    const filePath = path.join(__dirname, 'src/api/Cards.json');
+
+    try {
+        const data = await fs.readFile(filePath, 'utf8');
+        const cards = JSON.parse(data);
+
+        const card = cards.find(card => card.id === id);
+        if (card) {
+            const stockItem = card.stock.find(item => item.color === color);
+            if (stockItem) {
+                stockItem.amount -= amount;
+                if (stockItem.amount < 0) {
+                    stockItem.amount = 0;
+                }
+            }
+        }
+
+        await fs.writeFile(filePath, JSON.stringify(cards, null, 2));
+        res.json({ success: true, updatedCard: card });
+    } catch (error) {
+        console.error('Error updating stock:', error);
+        res.status(500).json({ error: 'Failed to update stock' });
+    }
+});
+
+app.patch('/api/update-stock', async (req, res) => {
+    const { id, color, amount } = req.body;
+    const filePath = path.join(__dirname, 'src/api/Cards.json');
+
+    try {
+        const data = await fs.readFile(filePath, 'utf8');
+        const cards = JSON.parse(data);
+
+        const card = cards.find(card => card.id === id);
+        if (card) {
+            const stockItem = card.stock.find(item => item.color === color);
+            if (stockItem) {
+                stockItem.amount += amount;
+                if (stockItem.amount < 0) {
+                    stockItem.amount = 0;
+                }
+            }
+        }
+
+        await fs.writeFile(filePath, JSON.stringify(cards, null, 2));
+        res.json({ success: true, updatedCard: card });
+    } catch (error) {
+        console.error('Error updating stock:', error);
+        res.status(500).json({ error: 'Failed to update stock' });
+    }
+});
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

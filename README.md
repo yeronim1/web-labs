@@ -1,1 +1,1 @@
-# web-labs
+# Lab 6
