@@ -9,7 +9,7 @@
     "stock": [
       {
         "cover": "Hardcover",
-        "amount": 0
+        "amount": 3
       },
       {
         "cover": "Softcover",
@@ -27,7 +27,7 @@
     "stock": [
       {
         "cover": "Hardcover",
-        "amount": 0
+        "amount": 9
       },
       {
         "cover": "Softcover",
